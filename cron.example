@@ -1,0 +1,2 @@
+# Recommended Phase 1 near-real-time polling (every minute)
+* * * * * /usr/bin/php /var/www/id.imtsinstitute.com/sync.php >> /var/www/id.imtsinstitute.com/storage/logs/cron.log 2>&1

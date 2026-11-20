@@ -1,0 +1,11 @@
+/* Phase 26: all ERP admission detail columns with independent horizontal scrolling. */
+.p26-admissions-table{width:100%;max-width:100%;overflow-x:auto;overflow-y:visible;scrollbar-width:auto;scrollbar-color:#9bb8b4 #eaf1ef;border:1px solid #dfe8e6;border-radius:12px}
+.p26-admissions-table table{min-width:2900px;width:max-content;border-collapse:separate;border-spacing:0}
+.p26-admissions-table th,.p26-admissions-table td{min-width:145px;max-width:280px;padding:13px 14px;white-space:normal;overflow-wrap:anywhere;vertical-align:middle}
+.p26-admissions-table th:first-child,.p26-admissions-table td:first-child{position:sticky;left:0;z-index:3;min-width:150px;background:#fff;box-shadow:3px 0 8px #193c3c18}
+.p26-admissions-table thead th:first-child{z-index:4;background:#eef5f2}
+.p26-admissions-table thead th{position:sticky;top:0;z-index:2;background:#f3f7f6}
+.p26-admissions-table .p22-timing-col{min-width:165px;max-width:210px}
+.p26-scroll-top{width:100%;overflow-x:auto;overflow-y:hidden;height:18px;margin:8px 0 2px;scrollbar-color:#9bb8b4 #eaf1ef}
+.p26-scroll-top-inner{height:1px}
+@media(max-width:760px){.p26-admissions-table th,.p26-admissions-table td{min-width:135px}.p26-admissions-table th:first-child,.p26-admissions-table td:first-child{min-width:135px}}

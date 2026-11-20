@@ -1,0 +1,22 @@
+/* Phase 31: permanent admissions-list display fix. Scope all overrides to THIS table only. */
+body.futura-app #p26-admissions-table{display:block!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;overflow-y:auto!important;overscroll-behavior-x:contain;scrollbar-width:auto;}
+body.futura-app #p26-admissions-table table{display:table!important;width:max-content!important;min-width:100%!important;max-width:none!important;table-layout:auto!important;border-collapse:separate!important;border-spacing:0!important;}
+body.futura-app #p26-admissions-table thead{display:table-header-group!important;}
+body.futura-app #p26-admissions-table tbody{display:table-row-group!important;}
+body.futura-app #p26-admissions-table tr{display:table-row!important;}
+body.futura-app #p26-admissions-table th,body.futura-app #p26-admissions-table td{display:table-cell!important;visibility:visible!important;min-width:135px!important;max-width:280px!important;white-space:normal!important;overflow-wrap:anywhere!important;vertical-align:middle!important;text-align:left!important;}
+body.futura-app #p26-admissions-table th:first-child,body.futura-app #p26-admissions-table td:first-child{position:sticky!important;left:0!important;z-index:3!important;min-width:145px!important;background:#fff!important;box-shadow:3px 0 8px rgba(25,60,60,.10);}
+body.futura-app #p26-admissions-table thead th:first-child{z-index:5!important;background:#edf5f1!important;}
+body.futura-app #p26-admissions-table thead th{position:sticky!important;top:0!important;z-index:2!important;}
+body.futura-app #p26-admissions-table td::before{content:none!important;display:none!important;}
+body.futura-app #p26-admissions-table tr{border-radius:0!important;margin:0!important;padding:0!important;}
+body.futura-app #p26-admissions-table th.p22-timing-col,body.futura-app #p26-admissions-table td.p22-timing-col{min-width:170px!important;}
+body.futura-app #p26-admissions-table th.p29-priority,body.futura-app #p26-admissions-table td.p29-priority{min-width:165px!important;}
+body.futura-app .p26-scroll-top{display:block!important;overflow-x:auto!important;max-width:100%!important;}
+@media(max-width:860px){body.futura-app #p26-admissions-table{overflow-x:auto!important;}
+body.futura-app #p26-admissions-table table{display:table!important;width:max-content!important;min-width:100%!important;}
+body.futura-app #p26-admissions-table thead{display:table-header-group!important;}
+body.futura-app #p26-admissions-table tbody{display:table-row-group!important;}
+body.futura-app #p26-admissions-table tr{display:table-row!important;}
+body.futura-app #p26-admissions-table th,body.futura-app #p26-admissions-table td{display:table-cell!important;min-width:135px!important;}
+}

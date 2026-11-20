@@ -1,0 +1,6 @@
+/* Phase 29: visible priority copies, without hiding any original fields. */
+.p26-admissions-table th.p29-priority {display:table-cell!important;visibility:visible!important;background:#e7f3ee!important;color:#264b40!important;min-width:175px!important;}
+.p26-admissions-table td.p29-priority {display:table-cell!important;visibility:visible!important;background:#f6fbf8!important;min-width:175px!important;}
+.p26-admissions-table {overflow-x:auto!important;max-width:100%;}
+.p26-admissions-table table {min-width:5800px;width:max-content;}
+.p26-admissions-table th:first-child,.p26-admissions-table td:first-child {position:sticky;left:0;z-index:5;}

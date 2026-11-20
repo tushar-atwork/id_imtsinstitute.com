@@ -1,0 +1,9 @@
+/* Phase 27: prioritize admission essentials; preserve full horizontal scroll. */
+.p26-admissions-table table{min-width:4100px;width:max-content}
+.p26-admissions-table th,.p26-admissions-table td{min-width:165px;max-width:300px;white-space:normal;overflow-wrap:anywhere}
+.p26-admissions-table th:nth-child(2),.p26-admissions-table td:nth-child(2){min-width:190px}
+.p26-admissions-table th:nth-child(3),.p26-admissions-table td:nth-child(3){min-width:220px}
+.p26-admissions-table th:nth-child(5),.p26-admissions-table td:nth-child(5){min-width:220px}
+.p26-admissions-table th:first-child,.p26-admissions-table td:first-child{position:sticky;left:0;z-index:3;min-width:155px;background:#fff}
+.p26-admissions-table thead th:first-child{z-index:5;background:#eef5f2}
+.p26-scroll-top{display:block;overflow-x:auto}

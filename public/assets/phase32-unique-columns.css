@@ -1,0 +1,7 @@
+/* Phase 32: unique columns only. Keep every remaining table cell visible. */
+body.futura-app #p26-admissions-table th,body.futura-app #p26-admissions-table td{display:table-cell!important;visibility:visible!important;}
+body.futura-app #p26-admissions-table table{width:max-content!important;min-width:100%!important;table-layout:auto!important;}
+body.futura-app #p26-admissions-table{overflow-x:auto!important;max-width:100%!important;}
+/* Use one visual treatment for each category, avoiding old duplicate-column position selectors. */
+body.futura-app #p26-admissions-table th.p29-priority{background:#e7f3ee!important;}
+body.futura-app #p26-admissions-table td.p29-priority{background:#f6fbf8!important;}

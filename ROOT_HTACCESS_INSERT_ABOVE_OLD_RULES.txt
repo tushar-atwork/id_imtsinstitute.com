@@ -1,0 +1,9 @@
+# IMTS CRM Phase 8 - paste into DOMAIN DOCUMENT ROOT .htaccess
+# Place immediately after RewriteEngine On and BEFORE the old root-to-public rules.
+# Preserve the existing cPanel PHP 8.3/8.4 handler, security denial rules and any unrelated rules.
+# Do not paste this inside public/.htaccess.
+
+RewriteRule ^(student|followups|workspace|bulk-assign|reports|performance|assignment-history|sync-health)\.php$ public/$1.php [L,QSA,NC]
+RewriteRule ^(student|followups|workspace|bulk-assign|reports|performance|assignment-history|sync-health)/?$ public/$1.php [L,QSA,NC]
+
+# Existing login/index/logout/run-sync and assets rules remain below this block.

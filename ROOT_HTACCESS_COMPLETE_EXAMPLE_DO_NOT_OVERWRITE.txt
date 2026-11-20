@@ -1,0 +1,15 @@
+# Example ONLY if domain document root is the project root containing app/, config/, public/.
+# DO NOT replace your live .htaccess blindly: preserve the existing PHP 8.3/8.4 cPanel handler.
+Options -Indexes
+RewriteEngine On
+RewriteRule ^(app|config|database|storage)/ - [F,L,NC]
+RewriteRule ^(install\.php|sync\.php)$ - [F,L,NC]
+RewriteRule ^(student|followups|workspace|bulk-assign|reports|performance|assignment-history|sync-health)\.php$ public/$1.php [L,QSA,NC]
+RewriteRule ^(student|followups|workspace|bulk-assign|reports|performance|assignment-history|sync-health)/?$ public/$1.php [L,QSA,NC]
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^$ public/index.php [L]
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(login\.php|logout\.php|run-sync\.php|index\.php)$ public/$1 [L]
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^assets/(.*)$ public/assets/$1 [L]
+# KEEP your live cPanel PHP 8.3+ handler below.

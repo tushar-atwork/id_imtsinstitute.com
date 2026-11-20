@@ -1,0 +1,5 @@
+/* Phase 30: compact priority columns at the start of the horizontal list. */
+.p26-admissions-table th.p29-priority,.p26-admissions-table td.p29-priority{min-width:145px!important;max-width:220px;white-space:normal;overflow-wrap:anywhere;}
+.p26-admissions-table th:first-child,.p26-admissions-table td:first-child{min-width:125px!important;}
+.p26-admissions-table{overflow-x:auto!important;}
+.p26-scroll-top{display:block!important;overflow-x:auto!important;}

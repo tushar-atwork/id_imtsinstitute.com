@@ -1,0 +1,15 @@
+/* Phase 36: analytical charts, self-contained: no external JS or network requests */
+.a36-charts{background:#fff;border:1px solid #deeae6;border-radius:16px;padding:22px;margin:18px 0 24px;box-shadow:0 5px 18px #173b3b06;min-width:0}
+.a36-legend{display:flex;gap:23px;align-items:center;color:#506777;font-size:13px;margin:12px 0 14px}
+.a36-dot{width:11px;height:11px;border-radius:3px;display:inline-block;margin-right:6px}.a36-admission{background:#438979}.a36-followup{background:#315f78}
+.a36-chart-scroll{overflow-x:auto;max-width:100%;border-bottom:1px solid #e6efec}
+.a36-daily-chart{display:flex;align-items:stretch;gap:7px;min-width:720px;height:235px;padding:13px 4px 0}
+.a36-day-group{min-width:17px;flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;color:#607986;font-size:10px}
+.a36-bars{display:flex;align-items:flex-end;gap:2px;height:195px;width:100%;justify-content:center;border-bottom:1px solid #e8efed}
+.a36-bar{max-width:17px;width:43%;min-height:0;border-radius:4px 4px 0 0;transition:filter .15s}
+.a36-bar:hover{filter:brightness(.8)}.a36-bar-admission{background:#438979}.a36-bar-followup{background:#315f78}
+.a36-footnote{font-size:12px;color:#647b7c;margin:12px 0 0}
+.a36-hrow{display:grid;grid-template-columns:minmax(125px,210px) minmax(100px,1fr) 46px;gap:15px;align-items:center;border-bottom:1px solid #edf2f0;padding:14px 0}
+.a36-hlabel{font-size:13px;font-weight:700;color:#2d4856;overflow:hidden;text-overflow:ellipsis}.a36-hlabel small{display:block;font-weight:400;color:#71828b;font-size:11px;margin-top:3px}
+.a36-track{height:19px;border-radius:5px;background:#edf4f1;overflow:hidden}.a36-fill{background:#438979;height:100%;border-radius:5px;min-width:0}.a36-hrow strong{text-align:right;color:#315f78;font-size:14px}
+@media(max-width:650px){.a36-charts{padding:15px}.a36-hrow{grid-template-columns:minmax(90px,130px) minmax(80px,1fr) 30px;gap:7px}}

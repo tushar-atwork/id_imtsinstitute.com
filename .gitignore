@@ -1,0 +1,12 @@
+# Credentials and local config
+config/local.php
+
+# Database dumps (large and contain student data)
+/imtsinst_*.sql
+/imtsinst_id*.sql
+
+# Runtime files
+storage/
+*.log
+*.orig
+*.zip

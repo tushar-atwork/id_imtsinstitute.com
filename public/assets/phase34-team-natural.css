@@ -1,0 +1,23 @@
+/* Phase 34: scope team-management overrides to avoid affecting admissions or student forms. */
+body.futura-app:has(.mgmt-page) { background:#f7f9f8!important; }
+.futura-app .mgmt-page { max-width:1320px!important; margin:0 auto; }
+.futura-app .mgmt-page>h1 { font-size:clamp(25px,2.3vw,31px)!important; font-weight:750!important; letter-spacing:-.035em!important; margin:3px 0 10px!important; color:#23384a!important; }
+.futura-app .mgmt-page .mgmt-lead { color:#68798a!important; font-size:14px; line-height:1.6; max-width:780px; }
+.futura-app .mgmt-tabs { display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 25px; }
+.futura-app .mgmt-tabs a { display:inline-flex;align-items:center;min-height:39px; padding:9px 14px; border:1px solid #dce5e7!important; background:#fff!important; border-radius:9px!important; color:#526779!important; box-shadow:none!important; font-size:13px; font-weight:650; text-decoration:none; }
+.futura-app .mgmt-tabs a.active,.futura-app .mgmt-tabs a[aria-current="page"] { color:#24594f!important; background:#e8f2f0!important; border-color:#a9d3c8!important; box-shadow:inset 0 -2px #438979!important; }
+.futura-app .mgmt-tabs a:hover { background:#f0f6f3!important; color:#24594f!important; }
+.futura-app .mgmt-card-grid { gap:16px; }
+.futura-app .mgmt-tile { padding:25px!important; background:#fff!important; border:1px solid #e2e9e9!important; box-shadow:0 4px 18px rgba(28,52,60,.035)!important; border-radius:13px!important; color:#233044!important; }
+.futura-app .mgmt-tile:hover { transform:translateY(-2px); border-color:#c5dcd5!important; box-shadow:0 10px 22px rgba(28,52,60,.065)!important; }
+.futura-app .mgmt-tile>span { color:#438979!important; font-size:11px; letter-spacing:.06em; }
+.futura-app .mgmt-tile h2 { font-size:19px!important; font-weight:740!important; margin:13px 0 7px!important; color:#25394a!important; }
+.futura-app .mgmt-tile p { color:#71808c!important; font-size:13px; line-height:1.55; }
+.futura-app .mgmt-tile b { margin-top:16px; color:#315f78!important; font-size:13px; }
+.futura-app .mgmt-eyebrow { display:inline-block; background:#e8f2f0; color:#316a5e; font-size:11px; font-weight:750; padding:7px 12px; border-radius:99px; margin-bottom:10px; letter-spacing:.02em; }
+.futura-app .mgmt-page .panel { background:white!important; border:1px solid #e2e9e9!important; border-radius:13px!important; box-shadow:0 4px 18px rgba(28,52,60,.035)!important; }
+.futura-app .mgmt-page .status-row { border-bottom:1px solid #edf1f1; padding:12px 0; }
+.futura-app .mgmt-page .status-row button,.futura-app .mgmt-page button[type=submit] { background:#315f78!important; border-color:#315f78!important; color:white!important; }
+.futura-app .mgmt-page input:focus,.futura-app .mgmt-page select:focus { border-color:#438979!important; outline:3px solid #43897922!important; }
+.futura-app .mgmt-page .table-wrap { overflow:auto; max-width:100%; }
+@media(max-width:700px){ .futura-app .mgmt-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;} .futura-app .mgmt-card-grid{grid-template-columns:1fr;} .futura-app .mgmt-tile{padding:20px!important;} }

@@ -1,0 +1,45 @@
+/* Phase 14: restrained operational interface; overlays existing Phase 10/11 */
+body.futura-app{--p14-line:#e6e9ef;--p14-ink:#182334;--p14-muted:#657184;background:#f7f8fa!important;color:var(--p14-ink)!important;transition:padding-left .22s ease}
+.futura-app .futura-sidebar{background:#fff!important;color:#243046!important;border-right:1px solid var(--p14-line);box-shadow:none!important;width:242px!important;transition:transform .22s ease,width .22s ease}
+.futura-app .futura-logo{color:#19253a!important;border-bottom:1px solid var(--p14-line);padding:4px 8px 23px}
+.futura-app .futura-mark{background:#263f69!important;box-shadow:none!important;border-radius:11px}
+.futura-app .futura-logotype{color:#1c2c43!important}.futura-app .futura-logotype small{color:#78849a!important}
+.futura-app .nav-category{color:#8892a2!important;letter-spacing:1px!important;font-size:10px!important}
+.futura-app .futura-nav-link{color:#48566c!important;font-size:13px!important;border-radius:8px!important;min-height:41px!important}
+.futura-app .futura-nav-link:hover{background:#f1f4f9!important;color:#172c49!important}
+.futura-app .futura-nav-link.is-current{background:#eaf0f9!important;color:#234a82!important;box-shadow:none!important}
+.futura-app .futura-sidefooter{border-top:1px solid var(--p14-line)!important}.futura-app .futura-live{color:#526078!important}.futura-app .futura-sidehint{color:#8a94a4!important}
+body.futura-app{padding-left:242px!important}body.futura-app.p14-nav-hidden{padding-left:0!important}
+body.futura-app.p14-nav-hidden .futura-sidebar{transform:translateX(-105%)}
+.futura-app .futura-topbar{background:#fff!important;border-bottom:1px solid var(--p14-line)!important;box-shadow:none!important}
+.futura-app .futura-menu{display:grid!important;place-items:center!important;min-width:38px!important;height:38px!important;background:#f4f6f9!important;color:#273b57!important;border:1px solid #e6e9ef!important;border-radius:9px!important;font-size:19px!important;cursor:pointer}
+.futura-app .futura-menu:hover{background:#eaf0f9!important}
+.futura-app .futura-breadcrumb{color:#66748a!important}.futura-app .futura-breadcrumb strong{color:#1f3048!important}
+.futura-app .futura-logout{border:1px solid #dbe2eb!important;color:#33445e!important;background:#fff!important}
+.futura-app main.container{max-width:none!important;padding:27px 30px 45px!important}
+.futura-app .futura-page-eyebrow{display:none!important}.futura-app .hero{background:transparent!important;box-shadow:none!important;border:0!important;padding:5px 0 18px!important;margin:0!important;align-items:center!important}
+.futura-app .hero h1{font-size:27px!important;letter-spacing:-.6px!important;color:#1d2b3e!important;margin:0 0 7px!important}
+.futura-app .hero p{font-size:13px!important;color:#738096!important;margin:5px 0!important}
+.futura-app .sync-btn,.futura-app .filters button{background:#264c7c!important;border:0!important;box-shadow:none!important;border-radius:8px!important;font-weight:600!important}
+.futura-app .cards{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important;margin:10px 0 23px!important}
+.futura-app .cards .card{background:#fff!important;border:1px solid var(--p14-line)!important;border-radius:11px!important;box-shadow:none!important;padding:19px 17px!important;min-width:0!important}
+.futura-app .cards .card:before,.futura-app .cards .card:after{display:none!important}.futura-app .cards .card span{color:#6b7687!important;font-size:12px!important}.futura-app .cards .card strong{color:#1f3048!important;font-size:25px!important;letter-spacing:-.5px!important;overflow-wrap:anywhere}
+.futura-app .panel{background:#fff!important;border:1px solid var(--p14-line)!important;border-radius:12px!important;box-shadow:none!important}
+.p14-admin-links{display:flex;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;margin:0 0 18px;padding:12px 15px;background:#fff;border:1px solid #e6e9ef;border-radius:10px}
+.p14-admin-links span{font-weight:700;margin-right:auto;color:#29384d}.p14-admin-links a{padding:7px 11px;border:1px solid #e0e6ee;border-radius:7px;text-decoration:none;color:#2c4d77;font-weight:600}
+.futura-app .p14-list-panel{padding:20px!important}.futura-app .filters{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:9px!important;margin:16px 0!important}
+.futura-app .filters input[name=q]{flex:2 1 250px!important;min-width:180px!important}.futura-app .filters select{flex:1 1 145px!important;min-width:125px!important;max-width:none!important}
+.futura-app .filters input,.futura-app .filters select{border:1px solid #dce3ec!important;border-radius:8px!important;background:#fff!important;height:40px!important}
+.futura-app .p14-admissions-table{overflow-x:auto!important;border:1px solid #e8ecf2!important;border-radius:9px!important}
+.futura-app .p14-admissions-table table{width:100%!important;min-width:770px!important;border-collapse:collapse!important}
+.futura-app .p14-admissions-table th{background:#f7f9fc!important;color:#657185!important;font-size:11px!important;letter-spacing:.15px!important;text-transform:none!important;padding:13px 11px!important}
+.futura-app .p14-admissions-table td{font-size:12px!important;color:#3c485a!important;padding:13px 11px!important;border-bottom:1px solid #edf0f4!important}
+.futura-app .p14-admissions-table tbody tr:hover{background:#f8fafd!important}
+/* Phase 31: no admissions-table columns are hidden. All data remains available. */
+
+.futura-app .p14-admissions-table td:nth-child(5) strong{font-size:12px!important}
+.futura-app .pagination a.active{background:#264c7c!important}
+@media(min-width:861px){body.futura-app.p14-nav-hidden .futura-scrim{display:none!important}}
+@media(max-width:1100px){.futura-app .cards{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:860px){body.futura-app,body.futura-app.p14-nav-hidden{padding-left:0!important}.futura-app .futura-sidebar{width:min(280px,86vw)!important;transform:translateX(-105%)}.futura-app.sidebar-open .futura-sidebar{transform:translateX(0)!important}.futura-app main.container{padding:18px 13px 35px!important}.futura-app .cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}.futura-app .cards .card{padding:15px!important}.futura-app .cards .card strong{font-size:21px!important}.futura-app .p14-admissions-table table{min-width:0!important}.futura-app .p14-admissions-table tbody tr{padding:10px!important}.futura-app .p14-admissions-table td{display:flex!important}.p14-admin-links span{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){.futura-app .futura-sidebar,body.futura-app{transition:none!important}}

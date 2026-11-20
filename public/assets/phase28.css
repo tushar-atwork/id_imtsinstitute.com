@@ -1,0 +1,8 @@
+/* Phase 28: preserve the Phase 26 table, all 24 original columns and three timing columns. */
+.p26-admissions-table{overflow-x:auto!important;max-width:100%;}
+.p26-admissions-table table{min-width:5100px;width:max-content;}
+.p26-admissions-table th.p28-added{background:#eaf3f8;color:#294b61;min-width:175px;}
+.p26-admissions-table td.p28-added{background:#f7fafc;min-width:175px;}
+.p26-admissions-table .p22-timing-col{display:table-cell!important;visibility:visible!important;min-width:175px;}
+.p26-admissions-table th:first-child,.p26-admissions-table td:first-child{position:sticky;left:0;z-index:4;background:#fff;}
+.p26-admissions-table thead th:first-child{z-index:6;background:#eef5f2;}

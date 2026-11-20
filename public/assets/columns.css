@@ -1,0 +1,15 @@
+.column-toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:16px 0 10px}.column-toolbar button,.column-settings button{cursor:pointer}.column-toolbar span{font-size:13px;color:#536675}.column-settings{max-height:370px;overflow:auto;padding:14px;margin-bottom:12px;border:1px solid #d7e5de;border-radius:12px;background:#fff}.column-settings[hidden]{display:none!important}.column-item{display:flex;align-items:center;gap:9px;padding:7px;border-bottom:1px solid #edf1ed}.column-item span{flex:1}.column-item.fixed{color:#596c65;background:#f3f8f5}.column-item button{min-width:34px}.column-item button:disabled{opacity:.35;cursor:default}
+body.futura-app #p26-admissions-table th.column-hidden,body.futura-app #p26-admissions-table td.column-hidden,#p26-admissions-table .column-hidden{display:none!important}
+/* Admissions: keep the five required contact columns visible while scrolling. */
+@media(min-width:1201px){
+ body.futura-app #p26-admissions-table th:nth-child(-n+5),body.futura-app #p26-admissions-table td:nth-child(-n+5){position:sticky!important;background:#fff!important;box-shadow:1px 0 0 #dce7e3!important;z-index:4!important}
+ body.futura-app #p26-admissions-table thead th:nth-child(-n+5){background:#eaf3ef!important;z-index:7!important}
+ body.futura-app #p26-admissions-table th:nth-child(1),body.futura-app #p26-admissions-table td:nth-child(1){left:0!important;width:180px!important;min-width:180px!important;max-width:180px!important}
+ body.futura-app #p26-admissions-table th:nth-child(2),body.futura-app #p26-admissions-table td:nth-child(2){left:180px!important;width:165px!important;min-width:165px!important;max-width:165px!important}
+ body.futura-app #p26-admissions-table th:nth-child(3),body.futura-app #p26-admissions-table td:nth-child(3){left:345px!important;width:145px!important;min-width:145px!important;max-width:145px!important}
+ body.futura-app #p26-admissions-table th:nth-child(4),body.futura-app #p26-admissions-table td:nth-child(4){left:490px!important;width:190px!important;min-width:190px!important;max-width:190px!important}
+ body.futura-app #p26-admissions-table th:nth-child(5),body.futura-app #p26-admissions-table td:nth-child(5){left:680px!important;width:220px!important;min-width:220px!important;max-width:220px!important;box-shadow:4px 0 8px #163f3322!important}
+}
+body.futura-app #p26-admissions-table{height:auto!important;max-height:none!important}
+body.futura-app #p26-admissions-table tbody{height:auto!important;max-height:none!important;overflow:visible!important}
+body.futura-app #p26-admissions-table tr{height:auto!important;max-height:none!important}

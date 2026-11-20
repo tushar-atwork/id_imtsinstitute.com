@@ -1,0 +1,8 @@
+/* Phase 24: distinct assignment and follow-up tabs */
+.phase16-student .p16-tabs .p16-tab[data-p16-tab="assignment"],
+.phase16-student .p16-tabs .p16-tab[data-p16-tab="followup"] {white-space:nowrap;}
+.phase16-student .p16-view[hidden] {display:none!important;}
+.phase16-student .p23-work-intro {margin-top:20px;}
+.phase16-student .team-grid[data-p16-view="assignment"] .team-card,
+.phase16-student .team-grid[data-p16-view="followup"] .team-card {min-height:0;}
+@media(max-width:650px){.phase16-student .p16-tabs{overflow-x:auto;flex-wrap:nowrap;}.phase16-student .p16-tabs .p16-tab{flex:0 0 auto;}}
