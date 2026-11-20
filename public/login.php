@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 require __DIR__ . '/../app/bootstrap.php';
 require_once __DIR__ . '/../app/ui/layout.php';
 
@@ -28,12 +29,12 @@ ui_start(['title' => 'Sign in', 'body_class' => 'auth-page']);
       <h2>Follow up, update, done.</h2>
       <p>Everything you need to recover pending admissions in one place: your records, follow-ups, call and WhatsApp, and status updates.</p>
       <ul>
-        <li>✓ Your assigned records, always up to date from the ERP</li>
-        <li>✓ Call, WhatsApp or email a student in one tap</li>
-        <li>✓ Documents → Form Filled → Verification, tracked end to end</li>
+        <li>&#10003; Your assigned records, always up to date from the ERP</li>
+        <li>&#10003; Call, WhatsApp or email a student in one tap</li>
+        <li>&#10003; Documents &rarr; Form Filled &rarr; Verification, tracked end to end</li>
       </ul>
     </div>
-    <div class="small">© IMTS Institute</div>
+    <div class="small">&copy; IMTS Institute</div>
   </section>
   <main class="auth-panel" id="main" tabindex="-1">
     <div class="auth-card">
