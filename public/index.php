@@ -23,7 +23,7 @@ $_SESSION['csrf'] ??= bin2hex(random_bytes(24));
 
 require_once __DIR__.'/../app/ListFilters.php';
 require_once __DIR__.'/../app/RecordSort.php';require_once __DIR__.'/../app/AssignmentSettings.php';require_once __DIR__.'/../app/ui/layout.php';
-$sort = RecordSort::current(); // Phase 54: newest synced first by default
+$sort = RecordSort::current(array_keys(RecordSort::more())); // Phase 54: newest synced first by default
 $q = trim((string)($_GET['q'] ?? ''));
 // Phase 50: these filters accept several values (status[]=1&status[]=2).
 $statusValues = array_values(array_unique(array_filter(array_map('intval', ListFilters::values('status')), static fn(int $v): bool => $v >= 1 && $v <= 4)));
@@ -137,7 +137,8 @@ if($phase11Ready){
  $dq=$crm->prepare("SELECT COALESCE(SUM(LOWER(TRIM(ws.outcome))='send with all completed docx'),0) complete,COALESCE(SUM(LOWER(TRIM(ws.outcome))<>'send with all completed docx'),0) sent_pending FROM crm_students s JOIN crm_workflow_stages ws ON ws.student_id=s.id AND ws.team_role='document_collection' AND ws.completed_at IS NOT NULL WHERE $summaryWhere");
  $dq->execute($summaryParams);$docDone=$dq->fetch(PDO::FETCH_ASSOC)?:$docDone;
 }
-if($docCondition)$summaryWhere.=' AND '.$docCondition;
+// Summary cards cover the user's whole scope so they stay the same when switching tabs
+// (the tab only changes the list and the "record(s)" count below).
 $sum=$crm->prepare("SELECT COUNT(*) total,SUM(s.admission_status_id=1) incomplete_count,SUM(s.admission_status_id=2) pending_count,SUM(s.admission_status_id=4) rejected_count,COALESCE(SUM(s.approved_payment_received),0) payment_total FROM crm_students s WHERE $summaryWhere");
 $sum->execute($summaryParams);$summary=$sum->fetch();
 
@@ -235,7 +236,7 @@ ui_start([
     <form class="filters" method="get"><input type="hidden" name="per_page" value="<?=$perPage?>"><?php if ($docViews): ?><input type="hidden" name="records" value="<?=e($docView)?>"><?php endif; ?>
       <div class="field recs-search"><label for="rec-q">Search</label><input class="input" id="rec-q" type="search" name="q" value="<?=e($q)?>" placeholder="Search name / admission no / phone / email"></div>
       <div class="crm-extra-filters">
-        <?=RecordSort::select($sort)?>
+        <?=RecordSort::select($sort, RecordSort::more())?>
         <?=ListFilters::select('status', 'Admission status (ERP)', [1=>'Incomplete', 2=>'Pending', 3=>'Approved', 4=>'Rejected'])?>
         <?=ListFilters::select('university', 'University', array_combine($universities, $universities))?>
         <?=ListFilters::select('counsellor', 'Counsellor', array_combine($counsellors, $counsellors))?>

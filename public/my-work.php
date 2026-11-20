@@ -85,8 +85,10 @@ if ($q !== '') {
     $where .= ' AND (s.student_name LIKE ? OR s.admission_no LIKE ? OR s.phone LIKE ? OR s.email LIKE ?)';
     for ($i = 0; $i < 4; $i++) $args[] = '%' . $q . '%';
 }
-$sort = RecordSort::current(['due']);
-$order = ($tab === 'today' || $sort === 'due') ? '(f.next_followup_at IS NULL),f.next_followup_at ASC,s.id DESC' : RecordSort::orderBy($sort);
+$sortExtra = array_merge(['due'], array_keys(RecordSort::more()));
+// Today's tab defaults to follow-up due order, but an explicit sort choice is honoured.
+$sort = isset($_GET['sort']) ? RecordSort::current($sortExtra) : ($tab === 'today' ? 'due' : RecordSort::NEWEST);
+$order = ($sort === 'due') ?'(f.next_followup_at IS NULL),f.next_followup_at ASC,s.id DESC' : RecordSort::orderBy($sort);
 $st = $crm->prepare('SELECT COUNT(*)' . $from . $where);
 $st->execute($args);
 $total = (int)$st->fetchColumn();
@@ -94,7 +96,7 @@ $perPage = PageSize::fromRequest();
 $page = max(1, (int)($_GET['page'] ?? 1));
 $page = min($page, max(1, (int)ceil($total / $perPage)));
 $offset = ($page - 1) * $perPage;
-$st = $crm->prepare('SELECT s.id,s.student_name,s.admission_no,s.phone,s.email,s.university,s.session_name,s.first_synced_at,s.created_at,' . RecordSort::isNewExpr() . ' AS is_new,st.status_label,f.created_at AS last_at,f.next_followup_at,f.delay_reason,f.contact_result' . $from . $where . ' ORDER BY ' . $order . ' LIMIT ' . $perPage . ' OFFSET ' . $offset);
+$st = $crm->prepare('SELECT s.id,s.student_name,s.admission_no,s.phone,s.email,s.university,s.session_name,s.first_synced_at,s.created_at,s.admission_date,s.approved_payment_received,' . RecordSort::isNewExpr() . ' AS is_new,st.status_label,f.created_at AS last_at,f.next_followup_at,f.delay_reason,f.contact_result' . $from . $where . ' ORDER BY ' . $order . ' LIMIT ' . $perPage . ' OFFSET ' . $offset);
 $st->execute($args);
 $rows = $st->fetchAll(PDO::FETCH_ASSOC);
 
@@ -135,7 +137,7 @@ ui_start([
 <form class="work-filters" method="get">
   <input type="hidden" name="tab" value="<?=ui_e($tab)?>"><input type="hidden" name="per_page" value="<?=$perPage?>">
   <div class="field grow"><label for="mw-q">Search my records</label><input class="input" id="mw-q" type="search" name="q" value="<?=ui_e($q)?>" placeholder="Name, phone, email or admission no."></div>
-  <div class="field"><?=RecordSort::select($sort, ['due' => 'Follow-up due date'])?></div>
+  <div class="field"><?=RecordSort::select($sort, ['due' => 'Follow-up due date'] + RecordSort::more())?></div>
   <button class="btn btn-primary" type="submit" data-loading>Search</button>
   <?php if ($q !== ''): ?><a class="btn" href="<?=ui_e(mw_url(['q' => '', 'page' => 1]))?>">Clear</a><?php endif; ?>
 </form>

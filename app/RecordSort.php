@@ -21,7 +21,18 @@ final class RecordSort {
     /** SQL ORDER BY body (without the ORDER BY keyword). Alias is a fixed code literal, never user input. */
     public static function orderBy(string $sort, string $alias = 's'): string {
         $e = self::syncedExpr($alias);
-        return $sort === self::OLDEST ? "$e ASC,$alias.id ASC" : "$e DESC,$alias.id DESC";
+        return match ($sort) {
+            self::OLDEST => "$e ASC,$alias.id ASC",
+            'adm_new' => "($alias.admission_date IS NULL),$alias.admission_date DESC,$alias.id DESC",
+            'adm_old' => "($alias.admission_date IS NULL),$alias.admission_date ASC,$alias.id ASC",
+            'name' => "$alias.student_name ASC,$alias.id ASC",
+            'amount' => "$alias.approved_payment_received DESC,$alias.id DESC",
+            default => "$e DESC,$alias.id DESC",
+        };
+    }
+    /** Extra sort options usable on any record list (keys are validated by current()). */
+    public static function more(): array {
+        return ['adm_new' => 'Admission date: newest', 'adm_old' => 'Admission date: oldest', 'name' => 'Student name A–Z', 'amount' => 'Approved amount: high to low'];
     }
     /** SQL boolean: synced within the last 24 hours. */
     public static function isNewExpr(string $alias = 's'): string {
