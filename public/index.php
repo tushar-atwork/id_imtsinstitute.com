@@ -231,7 +231,7 @@ ui_start([
   <?php endif; ?>
 
   <?=ListFilters::styles()?>
-  <details class="filter-panel" open>
+  <details class="filter-panel">
     <summary>Search &amp; filters</summary>
     <form class="filters" method="get"><input type="hidden" name="per_page" value="<?=$perPage?>"><?php if ($docViews): ?><input type="hidden" name="records" value="<?=e($docView)?>"><?php endif; ?>
       <div class="field recs-search"><label for="rec-q">Search</label><input class="input" id="rec-q" type="search" name="q" value="<?=e($q)?>" placeholder="Search name / admission no / phone / email"></div>
@@ -290,7 +290,7 @@ ui_start([
       </thead>
       <tbody>
       <?php foreach ($students as $s): ?>
-        <tr>
+        <tr class="row-link" data-href="student.php?id=<?=(int)$s['id']?>">
           <?php $t=$admissionTiming[(int)$s['id']]??[]; ?>
           <td><a class="rec-link" href="student.php?id=<?=(int)$s['id']?>"><?=e($s['student_name'])?></a><?=RecordSort::badge($s['crm_is_new'] ?? 0)?></td>
           <td><?=e($s['university'] ?? '')?></td>
@@ -324,6 +324,19 @@ ui_start([
       </tbody>
     </table>
   </div>
+  <style>tr.row-link{cursor:pointer}tr.row-link:hover td{background:rgba(79,70,229,.06)}</style>
+  <script>
+  // Whole-row click opens the record; links, buttons and form controls keep their own action, and selecting text does not navigate.
+  document.addEventListener('click',function(e){
+    var tr=e.target.closest('tr.row-link');
+    if(!tr||e.target.closest('a,button,input,select,textarea,label,summary')) return;
+    if(window.getSelection&&String(window.getSelection())!=='') return;
+    var url=tr.getAttribute('data-href');
+    if(!url) return;
+    if(e.ctrlKey||e.metaKey||e.button===1){window.open(url,'_blank');return;}
+    window.location.href=url;
+  });
+  </script>
   <script src="assets/columns.js?v=1" defer></script>
   <script src="assets/phase26.js?v=1" defer></script>
 

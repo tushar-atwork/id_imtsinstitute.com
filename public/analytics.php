@@ -60,11 +60,16 @@ if($view==='overall'){
  if(!$employee && !$isAdmin){$selected=$staff[0]??null;}
  $employeeDaily=a35fetch($crm,"SELECT DATE(f.created_at) day,COUNT(*) total FROM crm_team_followups f WHERE f.created_at>=? AND f.created_at<?".($employee?' AND f.created_by=?':'')." GROUP BY DATE(f.created_at) ORDER BY day",array_merge([$monthStart,$monthEnd],$employee?[$employee]:[]));
 }
-if(($_GET['export']??'')==='csv'&&$view==='employees'){
- header('Content-Type: text/csv; charset=utf-8');header('Content-Disposition: attachment; filename="imts_employee_analytics_'.date('Ymd').'.csv"');header('X-Content-Type-Options: nosniff');$fp=fopen('php://output','w');fputcsv($fp,['Employee','Team','Currently assigned active students','Follow-ups in period','Unique students contacted','Connected follow-ups','Currently overdue latest follow-ups']);foreach($staff as $r){fputcsv($fp,[a35csv($r['name']),$roleLabels[$r['role']]??$r['role'],$r['active_cases'],$r['followups'],$r['contacted'],$r['connected'],$r['overdue']]);}exit;
+$exportFmt=(string)($_GET['export']??'');
+if(in_array($exportFmt,['csv','xls','pdf'],true)&&$view==='employees'){
+ require_once __DIR__.'/../app/ReportExport.php';
+ $xr=[];foreach($staff as $r){$xr[]=[$r['name'],$roleLabels[$r['role']]??$r['role'],(int)$r['active_cases'],(int)$r['followups'],(int)$r['contacted'],(int)$r['connected'],(int)$r['overdue']];}
+ ReportExport::send($exportFmt,'imts_employee_analytics','Employee analytics '.$from.' to '.$to,['Employee','Team','Currently assigned active students','Follow-ups in period','Unique students contacted','Connected follow-ups','Currently overdue latest follow-ups'],$xr);
 }
-if(($_GET['export']??'')==='csv'&&$view==='overall'){
- header('Content-Type: text/csv; charset=utf-8');header('Content-Disposition: attachment; filename="imts_overall_analytics_'.date('Ymd').'.csv"');header('X-Content-Type-Options: nosniff');$fp=fopen('php://output','w');fputcsv($fp,['Metric','Value']);foreach(['Admission cohort'=>$overall['students'],'Approved payments on cohort'=>$overall['approved_amount'],'Pending admissions'=>$overall['pending_count'],'Incomplete admissions'=>$overall['incomplete_count'],'Rejected admissions'=>$overall['rejected_count'],'First ERP approvals captured'=>$overall['verified_count'],'Average sending delay days'=>$overall['avg_send_days'],'Average approval days'=>$overall['avg_approval_days'],'Follow-up actions in period'=>$overallActivity['followups'],'Distinct students contacted'=>$overallActivity['students_contacted'],'Connected follow-ups'=>$overallActivity['connected']] as $k=>$v)fputcsv($fp,[$k,$v]);exit;
+if(in_array($exportFmt,['csv','xls','pdf'],true)&&$view==='overall'){
+ require_once __DIR__.'/../app/ReportExport.php';
+ $xr=[];foreach(['Admission cohort'=>$overall['students'],'Approved payments on cohort'=>$overall['approved_amount'],'Pending admissions'=>$overall['pending_count'],'Incomplete admissions'=>$overall['incomplete_count'],'Rejected admissions'=>$overall['rejected_count'],'First ERP approvals captured'=>$overall['verified_count'],'Average sending delay days'=>$overall['avg_send_days'],'Average approval days'=>$overall['avg_approval_days'],'Follow-up actions in period'=>$overallActivity['followups'],'Distinct students contacted'=>$overallActivity['students_contacted'],'Connected follow-ups'=>$overallActivity['connected']] as $k=>$v)$xr[]=[$k,$v];
+ ReportExport::send($exportFmt,'imts_overall_analytics','Overall analytics '.$from.' to '.$to,['Metric','Value'],$xr);
 }
 $events=[];$admitEvents=[];
 foreach(($view==='overall'?$dailyActions:$employeeDaily) as $d)$events[$d['day']]=(int)$d['total'];
@@ -84,7 +89,7 @@ ui_start([
  'lead'=>'Separate management-wide and employee-wise analysis, with a date-range filter and activity calendar.',
  'user'=>$pageUser,'active'=>'analytics.php',
  'crumbs'=>[['Reports',null],['Analysis',null]],
- 'actions'=>ui_csv_button(a35link(['export'=>'csv']),'Export CSV'),
+ 'actions'=>'<div class="dropdown"><button class="btn" type="button" data-dropdown aria-haspopup="true" aria-expanded="false">'.ui_icon('note',16).'Export'.ui_icon('chevron',14).'</button><div class="dropdown-menu" hidden><a class="nav-link" href="'.a35h(a35link(['export'=>'csv'])).'"><span>Export as CSV</span></a><a class="nav-link" href="'.a35h(a35link(['export'=>'xls'])).'"><span>Export as Excel (.xls)</span></a><a class="nav-link" href="'.a35h(a35link(['export'=>'pdf'])).'"><span>Export as PDF</span></a></div></div>',
 ]);
 ?>
 <nav class="tabs" aria-label="Analytics sections">
